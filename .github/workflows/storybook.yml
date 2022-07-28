@@ -8,7 +8,7 @@ on:
   push:
     branches: [ "main" ]
     # Trigger the action only when files change in the folders defined here
-    paths: [.storybook/**", "src/**"]
+    # paths: [.storybook/**", "src/**"]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,16 +20,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Install and Build Storybook
+      - name: Install and Build
         run: |
           npm ci
           npm run build-storybook
 
       # Runs a set of commands using the runners shell
-      - name: Deploy Storybook
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: pages
