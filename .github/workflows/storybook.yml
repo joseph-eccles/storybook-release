@@ -7,9 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Trigger the action only when files change in the folders defined here
+    paths: [.storybook/**", "src/**"]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,4 +33,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: pages
-          folder: dist
+          folder: public
