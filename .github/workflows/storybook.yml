@@ -26,12 +26,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install and Build
         run: |
-          npm ci
+          npm install
           npm run build-storybook
 
       # Runs a set of commands using the runners shell
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: pages
-          folder: public
+          branch: main
+          folder: docs-build
+          TARGET_FOLDER: docs
