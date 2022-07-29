@@ -21,3 +21,14 @@ jobs:
         with:
           branch: gh-pages
           folder: public # output folder from `npm run build-storybook`
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy-dev
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "joseph-eccles/storybook-poc"
+          source_branch: "gh-pages"
+          destination_repo: "joseph-eccles/storybook-dev"
+          destination_branch: "gh-pages"
