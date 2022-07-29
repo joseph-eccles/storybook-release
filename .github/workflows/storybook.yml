@@ -25,6 +25,7 @@ jobs:
           folder: public # output folder from `npm run build-storybook`
 
   deploy-dev:
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
       - name: deploy-dev
