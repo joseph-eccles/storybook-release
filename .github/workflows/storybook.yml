@@ -27,7 +27,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v3
           with:
-            repository: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-dev.git"
+            repository: "joseph-eccles/storybook-dev"
 
         - name: Install and Build
           run: |
