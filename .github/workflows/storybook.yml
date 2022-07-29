@@ -31,7 +31,7 @@ jobs:
       - name: deploy-dev
         uses: wei/git-sync@v3
         with:
-          source_repo: "github/storybook-poc"
+          source_repo: "https://joseph-eccles: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@github.com/joseph-eccles/storybook-poc.git"
           source_branch: "gh-pages"
-          destination_repo: "github/storybook-dev"
+          destination_repo: "https://joseph-eccles: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@github.com/joseph-eccles/storybook-dev.git"
           destination_branch: "gh-pages"
