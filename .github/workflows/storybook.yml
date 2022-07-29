@@ -35,8 +35,3 @@ jobs:
           source_branch: "gh-pages"
           destination_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-dev.git"
           destination_branch: "gh-pages"
-          
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
