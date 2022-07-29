@@ -35,3 +35,4 @@ jobs:
           source_branch: "gh-pages"
           destination_repo: "git@github.com:joseph-eccles/storybook-dev.git"
           destination_branch: "gh-pages"
+          ssh_private_key: ${{ secrets.SSH }}
