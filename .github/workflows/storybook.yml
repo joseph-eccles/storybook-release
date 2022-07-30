@@ -26,9 +26,6 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v3
-          with:
-            repository: "joseph-eccles/storybook-dev"
-            branch: main
 
         - name: Install and Build
           run: |
