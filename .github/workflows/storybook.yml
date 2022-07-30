@@ -28,6 +28,7 @@ jobs:
           uses: actions/checkout@v3
           with:
             repository: "joseph-eccles/storybook-dev"
+            branch: main
 
         - name: Install and Build
           run: |
@@ -37,5 +38,6 @@ jobs:
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@v4
           with:
+            repository: "joseph-eccles/storybook-dev"
             branch: gh-pages
             folder: public # output folder from `npm run build-storybook`
