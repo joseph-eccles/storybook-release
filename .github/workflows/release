@@ -1,0 +1,40 @@
+name: Storybook
+on:
+  push:
+    branches:
+      - develop # if any push happens on branch `develop`, run this workflow
+    # paths: [".storybook/**", "src/**"] # trigger the action only when files change in the folders defined here
+  
+  workflow_dispatch: # enable manual workflow run option
+
+jobs:
+  deploy-dev:
+    # needs: build-and-deploy-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy-dev
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-poc.git"
+          source_branch: "develop"
+          destination_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-dev.git"
+          destination_branch: "main"
+
+  build-and-deploy-pages:
+      needs: deploy-dev
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: Install and Build
+          run: |
+            npm ci
+            npm run build-storybook
+
+        - name: Deploy
+          uses: JamesIves/github-pages-deploy-action@v4
+          with:
+            repository: "joseph-eccles/storybook-dev"
+            branch: gh-pages
+            folder: public # output folder from `npm run build-storybook`
