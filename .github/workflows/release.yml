@@ -15,8 +15,8 @@ jobs:
       - name: deploy-release
         uses: wei/git-sync@v3
         with:
-          source_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-dev.git"
-          source_branch: "main"
+          source_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-poc.git"
+          source_branch: "release"
           destination_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-release.git"
           destination_branch: "main"
 
