@@ -1,4 +1,4 @@
-name: Deploy to Develop
+name: Develop Branch to Develop Repo
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch: # enable manual workflow run option
 
 jobs:
-  deploy-dev:
+  copy-dev-branch-to-dev-repo:
     # needs: build-and-deploy-pages
     runs-on: ubuntu-latest
     steps:
