@@ -1,4 +1,4 @@
-name: Deploy to Release
+name: Release Branch to Release Repo
 on:
   push:
     branches:
@@ -8,33 +8,14 @@ on:
   workflow_dispatch: # enable manual workflow run option
 
 jobs:
-  deploy-release:
+  copy-release-branch-to-release-repo:
     # needs: build-and-deploy-pages
     runs-on: ubuntu-latest
     steps:
-      - name: deploy-release
+      - name: copy-release-branch-to-release-repo
         uses: wei/git-sync@v3
         with:
           source_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-poc.git"
           source_branch: "release"
           destination_repo: "https://joseph-eccles:${{ secrets.PAT_ACTIONS }}@github.com/joseph-eccles/storybook-release.git"
           destination_branch: "main"
-
-  build-and-deploy-pages:
-      needs: deploy-release
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-
-        - name: Install and Build
-          run: |
-            npm ci
-            npm run build-storybook
-
-        - name: Deploy
-          uses: JamesIves/github-pages-deploy-action@v4
-          with:
-            repository: "joseph-eccles/storybook-release"
-            branch: gh-pages
-            folder: public # output folder from `npm run build-storybook`
